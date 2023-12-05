@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #game-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+
+    <div id="game-container">
+        <button onclick="playGame('rock')">Rock</button>
+        <button onclick="playGame('paper')">Paper</button>
+        <button onclick="playGame('scissors')">Scissors</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function playGame(playerChoice) {
+            var choices = ['rock', 'paper', 'scissors'];
+            var computerChoice = choices[Math.floor(Math.random() * 3)];
+
+            var result = determineWinner(playerChoice, computerChoice);
+
+            document.getElementById('result').innerText = `Player chose ${playerChoice}. Computer chose ${computerChoice}. Result: ${result}`;
+        }
+
+        function determineWinner(player, computer) {
+            if (player === computer) {
+                return 'It\'s a tie!';
+            } else if ((player === 'rock' && computer === 'scissors') ||
+                (player === 'paper' && computer === 'rock') ||
+                (player === 'scissors' && computer === 'paper')) {
+                return 'Player wins!';
+            } else {
+                return 'Computer wins!';
+            }
+        }
+    </script>
+</body>
+
+</html>
